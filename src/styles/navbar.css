@@ -1,0 +1,372 @@
+/* ===== NAV ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 18px 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header.scrolled,
+header.solid {
+  background: rgba(247, 242, 232, 0.92);
+  backdrop-filter: blur(14px);
+  padding: 10px 0;
+  box-shadow: 0 1px 0 rgba(46, 22, 8, 0.08);
+}
+
+.logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.logo-badge img {
+  height: 64px;
+  width: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(176, 138, 74, 0.55);
+  background: var(--ivory);
+  transition: transform 0.5s ease;
+}
+.logo-badge:hover img {
+  transform: scale(1.06);
+}
+.logo-badge .wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  justify-content: center;
+}
+.logo-badge .wordmark .name {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  font-weight: 700;
+  line-height: 0.95;
+  transition: color 0.5s ease;
+}
+header.scrolled .logo-badge .wordmark .name,
+header.solid .logo-badge .wordmark .name {
+  color: var(--brown-deep);
+}
+.logo-badge .wordmark .sub {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-top: 1px;
+  line-height: 1;
+}
+
+nav.links {
+  display: flex;
+  gap: 34px;
+}
+nav.links a {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(247, 242, 232, 0.85);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.5s ease;
+}
+header.scrolled nav.links a,
+header.solid nav.links a {
+  color: var(--brown-deep);
+}
+nav.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.35s ease;
+}
+nav.links a:hover::after,
+nav.links a.active::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-wa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ivory);
+  border: 1px solid rgba(247, 242, 232, 0.5);
+  padding: 10px 18px;
+  transition: all 0.5s ease;
+}
+header.scrolled .nav-wa,
+header.solid .nav-wa {
+  color: var(--brown-deep);
+  border-color: var(--brown-deep);
+}
+.nav-wa:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--brown-deep);
+}
+
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brown-deep);
+  background: rgba(176, 138, 74, 0.18);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 8px 14px;
+  transition: all 0.35s ease;
+  text-decoration: none;
+}
+
+header.solid .nav-back-link,
+header.scrolled .nav-back-link {
+  color: var(--brown-deep);
+  background: rgba(176, 138, 74, 0.18);
+}
+
+.nav-back-link:hover {
+  background: var(--gold);
+  color: var(--brown-deep);
+  transform: translateX(-2px);
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 130;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+.burger span {
+  width: 24px;
+  height: 2px;
+  background: var(--ivory);
+  transition: all 0.35s ease;
+}
+header.scrolled .burger span,
+header.solid .burger span {
+  background: var(--brown-deep);
+}
+.burger.open span {
+  background: var(--ivory) !important;
+}
+.burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== Mobile drawer ===== */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--brown-deep);
+  z-index: 105;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 80px 24px 40px;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  /* CRITICAL FIX: Fully hide and disable pointer events when closed so text/buttons never bleed into the page */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              visibility 0.45s ease;
+}
+
+.mobile-drawer.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobile-drawer-brand {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.mobile-brand-name {
+  display: block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.95rem;
+  color: var(--ivory);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.mobile-brand-sub {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.mobile-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.mobile-drawer-nav a {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--ivory);
+  transition: color 0.3s ease;
+}
+
+.mobile-drawer-nav a:hover {
+  color: var(--gold);
+}
+
+.mobile-drawer-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.mobile-drawer .wa-mobile {
+  width: 100%;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: 1px solid var(--gold);
+  background: rgba(176, 138, 74, 0.12);
+  color: var(--ivory);
+  padding: 13px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.mobile-drawer .wa-mobile:hover {
+  background: var(--gold);
+  color: var(--brown-deep);
+}
+
+.mobile-drawer .call-mobile {
+  width: 100%;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid rgba(247, 242, 232, 0.3);
+  color: rgba(247, 242, 232, 0.85);
+  padding: 11px 20px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.mobile-drawer .call-mobile:hover {
+  border-color: var(--ivory);
+  color: var(--ivory);
+}
+
+.burger.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 980px) {
+  nav.links,
+  .nav-wa {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+  .logo-badge {
+    gap: 10px;
+  }
+  .logo-badge img {
+    height: 50px;
+    width: 50px;
+  }
+  .logo-badge .wordmark .name {
+    font-size: 1.45rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    line-height: 0.95;
+  }
+  .logo-badge .wordmark .sub {
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    margin-top: 1px;
+    line-height: 1;
+  }
+}

@@ -1,0 +1,229 @@
+/* ===== VISIT US ===== */
+.visit {
+  background: var(--cream);
+  padding: 130px 0;
+}
+.visit .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  border: 1px solid rgba(46, 22, 8, 0.12);
+}
+.visit-info {
+  padding: 64px 56px;
+  background: var(--ivory);
+}
+.visit-info h2 {
+  margin: 18px 0 18px;
+}
+.visit-info p.lede {
+  margin-bottom: 36px;
+  max-width: 40ch;
+}
+.visit-block {
+  margin-bottom: 26px;
+}
+.visit-block .lbl {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brown-warm);
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+}
+.visit-block p {
+  font-size: 0.98rem;
+  opacity: 0.9;
+}
+.visit-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+.map-wrap {
+  position: relative;
+  min-height: 420px;
+}
+.map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: 0;
+  filter: sepia(8%) saturate(85%);
+}
+
+/* ===== ULTRA-PREMIUM FINAL CTA ===== */
+.final-cta {
+  padding: 100px 0 120px;
+  background: var(--cream);
+  position: relative;
+}
+
+.final-cta-card {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(176, 138, 74, 0.35);
+  border-radius: 16px;
+  padding: 55px 44px;
+  text-align: center;
+  box-shadow: 0 16px 44px rgba(46, 22, 8, 0.07);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle corner gold frame */
+.final-cta-card::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(176, 138, 74, 0.16);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.final-cta-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.final-cta-ornament span {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.final-cta-eyebrow {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brown-warm);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.final-cta-card h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 4.5vw, 3.2rem);
+  color: var(--brown-deep);
+  line-height: 1.18;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.final-cta-lede {
+  max-width: 50ch;
+  margin: 0 auto 36px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.final-cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.premium-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 32px;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.premium-btn.primary-gold {
+  background: linear-gradient(135deg, #b08a4a 0%, #cbb07c 50%, #9c7538 100%);
+  color: #1f1006;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(176, 138, 74, 0.3);
+}
+
+.premium-btn.primary-gold:hover {
+  background: linear-gradient(135deg, #be9957 0%, #d8be8d 50%, #ad8442 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(176, 138, 74, 0.45);
+}
+
+.premium-btn.secondary-wa {
+  background: #ffffff;
+  color: #157335;
+  border: 1px solid rgba(37, 211, 102, 0.5);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.premium-btn.secondary-wa:hover {
+  background: #25D366;
+  color: #ffffff;
+  border-color: #25D366;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(37, 211, 102, 0.35);
+}
+
+@media (max-width: 980px) {
+  .visit .grid {
+    grid-template-columns: 1fr;
+  }
+  .visit {
+    padding: 85px 0;
+  }
+  .final-cta {
+    padding: 80px 0 100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .visit {
+    padding: 65px 0;
+  }
+  .visit-info {
+    padding: 36px 20px;
+  }
+  .map-wrap {
+    min-height: 320px;
+  }
+  .map-wrap iframe {
+    min-height: 320px;
+  }
+  .final-cta {
+    padding: 60px 0 80px;
+  }
+  .final-cta-card {
+    padding: 38px 20px;
+  }
+  .final-cta-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .premium-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 20px;
+  }
+}

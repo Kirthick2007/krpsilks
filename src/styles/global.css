@@ -1,0 +1,307 @@
+:root {
+  --brown-deep: #2e1608;
+  --brown-warm: #6b4634;
+  --gold: #b08a4a;
+  --ivory: #faf6ea;
+  --cream: #f1e9d2;
+  --ink: #241004;
+  --gold-faint: rgba(176, 138, 74, 0.28);
+  --serif: "Cormorant Garamond", serif;
+  --sans: "Manrope", sans-serif;
+  --font-brand: "Josefin Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--gold-faint);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brown-warm);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+}
+.eyebrow svg {
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--brown-deep);
+  letter-spacing: 0.005em;
+}
+h1 {
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  line-height: 1.05;
+  font-weight: 500;
+}
+h2 {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.15;
+}
+p {
+  color: var(--ink);
+  opacity: 0.86;
+  font-size: 1.02rem;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+section {
+  position: relative;
+}
+
+/* page content sits below the fixed header */
+.page {
+  padding-top: 112px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 16px 30px;
+  border: 1px solid var(--brown-deep);
+  background: transparent;
+  color: var(--brown-deep);
+  cursor: pointer;
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+.btn svg {
+  transition: transform 0.4s ease;
+}
+.btn:hover {
+  background: var(--brown-deep);
+  color: var(--ivory);
+}
+.btn:hover svg {
+  transform: translateX(4px);
+}
+.btn.solid {
+  background: var(--brown-deep);
+  color: var(--ivory);
+}
+.btn.solid:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--brown-deep);
+}
+.btn.ghost-light {
+  border-color: rgba(247, 242, 232, 0.65);
+  color: var(--ivory);
+}
+.btn.ghost-light:hover {
+  background: var(--ivory);
+  color: var(--brown-deep);
+}
+
+/* placeholder photography block — used only where no image file exists yet */
+.ph {
+  position: relative;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    135deg,
+    #4a3226 0px,
+    #4a3226 1px,
+    #2e1608 1px,
+    #2e1608 42px
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  min-height: 220px;
+}
+.ph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(46, 22, 8, 0) 40%, rgba(20, 12, 8, 0.55) 100%);
+}
+.ph-label {
+  position: relative;
+  z-index: 1;
+  color: var(--cream);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 16px 18px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+.ph.light {
+  background: repeating-linear-gradient(135deg, #e9dcb6 0px, #e9dcb6 1px, #f1e9d2 1px, #f1e9d2 42px);
+}
+.ph.light .ph-label {
+  color: var(--brown-deep);
+}
+.ph.light::after {
+  background: linear-gradient(180deg, rgba(239, 231, 200, 0) 45%, rgba(46, 22, 8, 0.18) 100%);
+}
+
+/* photograph frame — for real image files (hero/showroom/collections) */
+.photo {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== reveal on scroll ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 0.8, 0.3, 1), transform 0.9s cubic-bezier(0.16, 0.8, 0.3, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 {
+  transition-delay: 0.12s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.24s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.36s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== floral motif veil (from the KRPSILKS logo) ===== */
+:root {
+  --floral-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23B08A4A' stroke-width='1' opacity='0.55'%3E%3Cpath d='M80 26c9 11 9 25 0 36c-9-11-9-25 0-36z'/%3E%3Ccircle cx='80' cy='58' r='5'/%3E%3Cpath d='M46 100c16-7 30-7 40 4c-16 7-30 7-40-4z'/%3E%3Cpath d='M114 100c-16-7-30-7-40 4c16 7 30 7 40-4z'/%3E%3Cpath d='M80 112c0 16-9 27-9 27s-9-11-9-27'/%3E%3Cpath d='M28 34c6 8 6 17 0 25c-6-8-6-17 0-25z'/%3E%3Cpath d='M132 34c6 8 6 17 0 25c-6-8-6-17 0-25z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.floral-veil {
+  position: relative;
+}
+.floral-veil::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--floral-pattern);
+  background-size: 180px 180px;
+  opacity: 0.22;
+}
+.floral-veil > .container {
+  position: relative;
+  z-index: 1;
+}
+.floral-veil.dark::before {
+  opacity: 0.08;
+  filter: brightness(1.9);
+}
+
+/* ===== WhatsApp floating button ===== */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 90;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.wa-float:hover {
+  transform: scale(1.12);
+  filter: drop-shadow(0 6px 20px rgba(37, 211, 102, 0.5));
+}
+
+.wa-float svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .wa-float {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+}

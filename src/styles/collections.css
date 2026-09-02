@@ -1,0 +1,140 @@
+/* ===== COLLECTIONS IMAGE GALLERY ===== */
+.collections {
+  padding: 120px 0;
+  position: relative;
+}
+
+.collections .head {
+  max-width: 60ch;
+  margin-bottom: 50px;
+}
+
+.collections .head h2 {
+  margin: 18px 0 16px;
+}
+
+.coll-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.coll-gallery-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(176, 138, 74, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  background: var(--brown-deep);
+}
+
+.coll-gallery-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 18px 42px rgba(36, 16, 4, 0.28);
+}
+
+.coll-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  display: block;
+}
+
+.coll-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s cubic-bezier(0.16, 0.8, 0.3, 1);
+  display: block;
+}
+
+.coll-gallery-card:hover .coll-img-wrap img {
+  transform: scale(1.06);
+}
+
+.coll-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 10, 4, 0) 0%,
+    rgba(20, 10, 4, 0.25) 35%,
+    rgba(20, 10, 4, 0.88) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px 22px;
+  box-sizing: border-box;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.coll-tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.coll-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--ivory);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* 7th item in 3-column grid spans full width on larger screens or sits centered */
+@media (min-width: 981px) {
+  .coll-gallery-card:nth-child(7) {
+    grid-column: 1 / -1;
+  }
+  .coll-gallery-card:nth-child(7) .coll-img-wrap {
+    height: 320px;
+  }
+}
+
+@media (max-width: 980px) {
+  .collections {
+    padding: 90px 0;
+  }
+  .coll-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .coll-img-wrap {
+    height: 320px;
+  }
+  .coll-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .collections {
+    padding: 70px 0;
+  }
+  .coll-gallery-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .coll-img-wrap {
+    height: 300px;
+  }
+  .coll-title {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,94 @@
+/* ===== SHOWROOM EXPERIENCE ===== */
+.experience {
+  background: var(--cream);
+  padding: 130px 0;
+}
+.experience .head {
+  max-width: 60ch;
+  margin-bottom: 16px;
+}
+.experience .head h2 {
+  margin: 18px 0 16px;
+}
+.experience .lede {
+  max-width: 52ch;
+  margin-bottom: 60px;
+  font-size: 1.06rem;
+}
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap: 20px;
+}
+.exp-grid .photo:nth-child(1),
+.exp-grid .ph:nth-child(1) {
+  grid-row: span 2;
+}
+.exp-grid .photo,
+.exp-grid .ph {
+  height: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(176, 138, 74, 0.25);
+  transition: transform 0.7s cubic-bezier(0.16, 0.8, 0.3, 1), box-shadow 0.4s ease;
+}
+.exp-grid .photo:hover,
+.exp-grid .ph:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 24px rgba(36, 16, 4, 0.15);
+}
+
+/* ===== WHY KRPSILKS ===== */
+.why {
+  padding: 120px 0;
+}
+.why .head {
+  max-width: 50ch;
+  margin-bottom: 60px;
+}
+.why .head h2 {
+  margin: 18px 0 0;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(46, 22, 8, 0.12);
+  border: 1px solid rgba(46, 22, 8, 0.12);
+}
+.why-item {
+  background: var(--ivory);
+  padding: 40px 28px;
+}
+.why-item .idx {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 22px;
+}
+.why-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.why-item p {
+  font-size: 0.92rem;
+}
+
+@media (max-width: 980px) {
+  .exp-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px 220px;
+  }
+  .exp-grid .photo:nth-child(1),
+  .exp-grid .ph:nth-child(1) {
+    grid-column: span 2;
+    grid-row: auto;
+    height: 220px;
+  }
+  .why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
