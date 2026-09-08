@@ -81,9 +81,10 @@ export default function Instagram() {
         {/* ===== REELS SECTION HEADER ===== */}
         <div className="reels-heading reveal reveal-delay-2">
           <span className="reels-subhead">Featured Instagram Reels</span>
+          <span className="reels-swipe-hint">← Swipe to browse reels →</span>
         </div>
 
-        {/* ===== REELS GRID ===== */}
+        {/* ===== REELS HORIZONTAL TRACK ===== */}
         <div className="reels-grid reveal reveal-delay-3">
           {reels.map((reel, index) => {
             const hasSpecificReel = reel.url && (reel.url.includes("/reel/") || reel.url.includes("/p/") || reel.id);
