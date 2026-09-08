@@ -92,29 +92,6 @@ export default function Instagram() {
 
             return (
               <div className="reel-card" key={index}>
-                <div className="reel-header">
-                  <div className="reel-user">
-                    <img src="/images/logo.webp" alt="KRPSILKS" className="reel-avatar" />
-                    <div>
-                      <span className="reel-username">{siteConfig.brandName}</span>
-                      <span className="reel-tag">{reel.tag || "Collection"}</span>
-                    </div>
-                  </div>
-                  <a
-                    href={reel.url || siteConfig.instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="reel-ig-icon"
-                    aria-label="View on Instagram"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                  </a>
-                </div>
-
                 <div className="reel-media-wrapper">
                   {embedSrc ? (
                     <iframe
